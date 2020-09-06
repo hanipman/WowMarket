@@ -27,11 +27,14 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
 
+    // Gson dependency
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    // PostgreSQL Dependency
+    implementation 'org.postgresql:postgresql:42.2.8'
+
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'
-
-    // H2 Dependency
-    implementation 'com.h2database:h2:1.4.200'
 }
 
 javafx {

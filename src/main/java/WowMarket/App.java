@@ -15,10 +15,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class App extends Application {
-    static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:~/test";
+    static final String JDBC_DRIVER = "org.postgresql.Driver";
+    static final String DB_URL = "jdbc:postgresql://localhost/postgres";
 
-    static final String USER = "sa";
+    static final String USER = "postgres";
     static final String PASS = "";
 
     @Override
@@ -40,19 +40,19 @@ public class App extends Application {
             System.out.println("Connection to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            System.out.println("Creating table in given database...");
-            stmt = conn.createStatement();
-            String sql = "CREATE TABLE REGISTRATION " +
-                "(id INTEGER not NULL, " +
-                " first VARCHAR(255), " +
-                " last VARCHAR(255), " +
-                " age INTEGER, " +
-                " PRIMARY KEY ( id ))";
-            stmt.executeUpdate(sql);
-            System.out.println("Created table in given database...");
+        //     System.out.println("Creating table in given database...");
+        //     stmt = conn.createStatement();
+        //     String sql = "CREATE TABLE REGISTRATION " +
+        //         "(id INTEGER not NULL, " +
+        //         " first VARCHAR(255), " +
+        //         " last VARCHAR(255), " +
+        //         " age INTEGER, " +
+        //         " PRIMARY KEY ( id ))";
+        //     stmt.executeUpdate(sql);
+        //     System.out.println("Created table in given database...");
 
-            stmt.close();
-            conn.close();
+        //     stmt.close();
+        //     conn.close();
         } catch (SQLException se) {
             se.printStackTrace();
         } catch (Exception e) {
