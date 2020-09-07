@@ -1,2 +1,5 @@
+.gradle/6.6.1/
+.gradle/buildOutputCleanup/
+.gradle/checksums/
+
 build/
-.gradle/
