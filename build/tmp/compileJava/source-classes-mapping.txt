@@ -1,4 +1,0 @@
-WowMarket/App.java
- WowMarket.App
-WowMarket/BnetAPIConnect.java
- WowMarket.BnetAPIConnect
