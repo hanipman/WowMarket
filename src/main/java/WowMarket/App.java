@@ -4,67 +4,64 @@
 package WowMarket;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.net.URL;
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.Map;
 
 public class App extends Application {
-    static final String JDBC_DRIVER = "org.postgresql.Driver";
-    static final String DB_URL = "jdbc:postgresql://localhost/postgres";
-
-    static final String USER = "postgres";
-    static final String PASS = "";
 
     @Override
     public void start(Stage stage) {
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
-        Label l = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        Scene scene = new Scene(new StackPane(l), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            URL url = getClass().getResource("/MainScene.fxml");
+            loader.setLocation(url);
+            Parent pane = loader.load();
+            Scene scene = new Scene(pane, 640, 480);
+            stage.setScene(scene);
+            stage.setTitle("WowMarket");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
-        Connection conn = null;
-        Statement stmt = null;
+        /*WowDB wowDB = new WowDB();
         try {
-            Class.forName(JDBC_DRIVER);
-            
-            System.out.println("Connection to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-        //     System.out.println("Creating table in given database...");
-        //     stmt = conn.createStatement();
-        //     String sql = "CREATE TABLE REGISTRATION " +
-        //         "(id INTEGER not NULL, " +
-        //         " first VARCHAR(255), " +
-        //         " last VARCHAR(255), " +
-        //         " age INTEGER, " +
-        //         " PRIMARY KEY ( id ))";
-        //     stmt.executeUpdate(sql);
-        //     System.out.println("Created table in given database...");
-
-        //     stmt.close();
-        //     conn.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
+            wowDB.connect("area_52", "postgres", "XXBankai00");
+            List<Map<String, Object>> price_list = wowDB.getItem(153050);
+            for (Map<String, Object> mp : price_list) {
+                System.out.println("{");
+                for (Map.Entry<String, Object> entry : mp.entrySet()) {
+                    System.out.print(entry.getKey() + " : ");
+                    if (entry.getValue() instanceof Timestamp) {
+                        System.out.println(entry.getValue());
+                    }
+                    else if (entry.getValue() instanceof Integer) {
+                        System.out.println(entry.getValue());
+                    }
+                    else if (entry.getValue() instanceof Long) {
+                        System.out.println(entry.getValue());
+                    }
+                    else {
+                        throw new IllegalStateException("Bad state");
+                    }
+                }
+                System.out.println("}");
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
+            System.exit(0);
         }
-        System.out.println("Goodbye!");
+        */
         launch();
     }
 }
