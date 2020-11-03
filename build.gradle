@@ -30,8 +30,14 @@ dependencies {
     // Gson dependency
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    // PostgreSQL Dependency
+    // PostgreSQL dependency
     implementation 'org.postgresql:postgresql:42.2.8'
+
+    // JFreeChart dependency
+    implementation 'org.jfree:jfreechart:1.5.1'
+
+    // JFreeChart-FX dependency
+    implementation 'org.jfree:jfreechart-fx:1.0.1'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'

@@ -53,12 +53,14 @@ public class WowDB {
                 long avg_unit_price = rs.getLong("avg_unit_price");
                 long high_price = rs.getLong("high_price");
                 long low_price = rs.getLong("low_price");
+                long std_dev = rs.getLong("std_dev");
                 Map<String, Object> mp = new HashMap<>();
                 mp.put("interval", timestamp);
                 mp.put("quantity", quantity);
                 mp.put("avg_unit_price", avg_unit_price);
                 mp.put("high_price", high_price);
                 mp.put("low_price", low_price);
+                mp.put("std_dev", std_dev);
                 price_list.add(mp);
             }
         } catch (SQLException e) {
